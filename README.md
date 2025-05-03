@@ -1,7 +1,7 @@
 # 📒 Quizal
 **Created by Tim Lawler**
 
-[Click to play Quizal!](link)
+[Click to play Quizal!]( https://tlawler1986.github.io/Quizlet)
 
 ## 📃Description
 A simple game to test your basic knowledge on firearms.  The questions are multiple choice based with 4 possible answer, with only one being correct.  Complete the short quiz to ensure... Can I trust you on the range?
