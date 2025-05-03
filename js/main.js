@@ -91,7 +91,7 @@ function init() {
             chosenAnswer: null
         }   
     ];
-    questionIdx = 0; //
+    questionIdx = 0; 
     score = 0;
     answersEls.forEach(btn => btn.style.display = 'inline-block'); // show all answer buttons
     submitBtn.style.display = "inline-block"; // show submit button
