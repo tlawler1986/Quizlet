@@ -18,11 +18,11 @@ const resetBtn = document.querySelector('#reset');
 
  
 /*----- event listeners -----*/
-answersEls.forEach(btn => { // add event listener to all answer buttons
+answersEls.forEach(btn => { 
     btn.addEventListener("click", handleAnswer);
 });
 
-submitBtn.addEventListener("click", handleSubmit); // add event listener to submit button
+submitBtn.addEventListener("click", handleSubmit);
 resetBtn.addEventListener("click", init);
  
 /*----- functions -----*/
@@ -93,31 +93,31 @@ function init() {
     ];
     questionIdx = 0; 
     score = 0;
-    answersEls.forEach(btn => btn.style.display = 'inline-block'); // show all answer buttons
-    submitBtn.style.display = "inline-block"; // show submit button
+    answersEls.forEach(btn => btn.style.display = 'inline-block'); 
+    submitBtn.style.display = "inline-block"; 
     render();
 }
 //Question/answer sources quizlet.com
 
-function handleAnswer(evt) { // handle answer button click
-    selectedBtn = evt.target; // get the button that was clicked
-    selectedIdx = parseInt(selectedBtn.id.replace("btn","")) -1; // get the index of the answer
-    questions[questionIdx].chosenAnswer = selectedIdx; // set the choosen answer in the questions array
-    answersEls.forEach(btn => btn.classList.remove("selected"));// remove selected class from all buttons
-    selectedBtn.classList.add("selected"); // add selected class to the clicked button
-    submitBtn.disabled = false; // enable submit button
+function handleAnswer(evt) { 
+    selectedBtn = evt.target; 
+    selectedIdx = parseInt(selectedBtn.id.replace("btn","")) -1;
+    questions[questionIdx].chosenAnswer = selectedIdx; 
+    answersEls.forEach(btn => btn.classList.remove("selected"));
+    selectedBtn.classList.add("selected"); 
+    submitBtn.disabled = false; 
 }
 
 function handleSubmit() {
-   currentQuestion = questions[questionIdx]; // get the current question
-   if(currentQuestion.chosenAnswer === null) { // check if an answer was selected
+   currentQuestion = questions[questionIdx]; 
+   if(currentQuestion.chosenAnswer === null) { 
     return;
    }
-    if(currentQuestion.chosenAnswer === currentQuestion.correctAnswer) { // check if the answer is correct
-          score++; // increment score
+    if(currentQuestion.chosenAnswer === currentQuestion.correctAnswer) { 
+          score++; 
     }
     questionIdx++;
-    if (questionIdx === questions.length) { // check if all questions have been answered
+    if (questionIdx === questions.length) { 
         renderResults();
     } else {
         render();
@@ -125,21 +125,21 @@ function handleSubmit() {
 }
 
 function render() {
-    currentQuestion = questions[questionIdx]; // get the current question
-    questionEl.textContent = currentQuestion.question; // set the question text
-    answersEls.forEach((btn, idx) => { // loop through all answer buttons
-        btn.textContent = currentQuestion.answers[idx]; // set the button text to the answer
-        btn.classList.remove("selected"); // remove selected class from all buttons
-        btn.style.display = 'inline-block'; // show all answer buttons
+    currentQuestion = questions[questionIdx]; 
+    questionEl.textContent = currentQuestion.question; 
+    answersEls.forEach((btn, idx) => { 
+        btn.textContent = currentQuestion.answers[idx]; 
+        btn.classList.remove("selected"); 
+        btn.style.display = 'inline-block'; 
     });
-    scoreEl.textContent = `Score: ${score}`; // set the score text
-    submitBtn.disabled = true; // disable submit button
-    submitBtn.style.display = "inline-block"; // show submit button
+    scoreEl.textContent = `Score: ${score}`; 
+    submitBtn.disabled = true; 
+    submitBtn.style.display = "inline-block"; 
 }
 
 function renderResults() {
-    questionEl.textContent = "Can I trust you on the Range?"; // set the question text to results
-    answersEls.forEach(btn => btn.style.display = 'none'); // clear the answers
-    submitBtn.style.display = "none"; // hide the next button
-    scoreEl.textContent = `Final Score: ${score} / ${questions.length}`; // set the final score text
+    questionEl.textContent = "Can I trust you on the Range?"; 
+    answersEls.forEach(btn => btn.style.display = 'none'); 
+    submitBtn.style.display = "none"; 
+    scoreEl.textContent = `Final Score: ${score} / ${questions.length}`; 
 }
