@@ -65,3 +65,16 @@ h2 {
     margin-top: 20px;
 }
 
+.selected {
+    background-color: aqua;
+}
+
+.reset {
+    display: flex;
+    justify-content: center;
+}
+
+#reset {
+    cursor: pointer;
+    color: black;
+}
