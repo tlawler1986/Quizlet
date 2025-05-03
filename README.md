@@ -13,10 +13,10 @@ A simple game to test your basic knowledge on firearms.  The questions are multi
 
 # 💻 Technologies used
 
--Javascript
--HTML
--CSS
--Quizlet (source of some questions)
+- Javascript
+- HTML
+- CSS
+- Quizlet (source of some questions)
 
 # 🕹️ Getting Started
 1. Click the answer you believe is correct
