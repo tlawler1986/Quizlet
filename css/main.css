@@ -21,10 +21,11 @@ body {
     background-color: gray;
     width: 50%;
     padding: 20px;
+    text-align: center;
 }
 
 h1 {
-    color: black;
+    color: whitesmoke;
     font-size: 3em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     text-align: center;
@@ -32,41 +33,46 @@ h1 {
 }
 
 h2 {
-    color: black;
+    color: white;
     font-size: 1.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     text-align: center;
     margin: auto;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;    
-    align-items: flex-start;
-}
-
 .buttons-area {
     width: 100%;  
     display: flex;
+    gap: 10px;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-.buttons button {
-    width: 100px;
+.buttons-area button {
+    width: 100%;
+    margin: 5px;
+    font-size: 1em;
+    flex: 1 1 45%;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .submit {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: auto;
     align-items: center;
     margin-top: 20px;
 }
 
+.submit button {
+    cursor: pointer;
+    width: auto;
+    font-size: 1em;
+
+}
+
 .selected {
-    background-color: aqua;
+    background-color: aquamarine;
 }
 
 .reset {
@@ -74,7 +80,15 @@ h2 {
     justify-content: center;
 }
 
-#reset {
-    cursor: pointer;
-    color: black;
+.question {
+    font-size: 3em;
+    font-weight: bold;
+    color: whitesmoke;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+#score {
+    color: white;
+    font-size: 1.5em;
 }

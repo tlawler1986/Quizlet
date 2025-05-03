@@ -1,9 +1,9 @@
-  /*----- constants -----*/
+/*----- constants -----*/
 
 
   
 /*----- state variables -----*/
-let questions;
+let questions; 
 let score;
 let questionIdx;
 
@@ -14,15 +14,16 @@ const questionEl = document.querySelector('.question');
 const answersEls = document.querySelectorAll('.btn');
 const scoreEl = document.querySelector('#score');   
 const submitBtn = document.querySelector('#submit');
+const resetBtn = document.querySelector('#reset');
 
  
 /*----- event listeners -----*/
-document.querySelectorAll(".btn").forEach(btn => {
+answersEls.forEach(btn => { // add event listener to all answer buttons
     btn.addEventListener("click", handleAnswer);
 });
 
-document.querySelector("#submit").addEventListener("click", handleSubmit);
-document.querySelector("#reset").addEventListener("click", init);
+submitBtn.addEventListener("click", handleSubmit); // add event listener to submit button
+resetBtn.addEventListener("click", init);
  
 /*----- functions -----*/
 init();
@@ -67,8 +68,8 @@ function init() {
         },
         {
             question: "The part of the gun which holds the cartridge is called the?",
-            answers: ['Barrel', 'Breech', 'Chamber', 'Receiver'],
-            correctAnswer: 0,
+            answers: ['Pistol Assembly', 'Breech', 'Chamber', 'Receiver'],
+            correctAnswer: 2,
             chosenAnswer: null
         },
         {
@@ -90,25 +91,25 @@ function init() {
             chosenAnswer: null
         }   
     ];
-    questionIdx = 0;
+    questionIdx = 0; //
     score = 0;
+    answersEls.forEach(btn => btn.style.display = 'inline-block'); // show all answer buttons
+    submitBtn.style.display = "inline-block"; // show submit button
     render();
 }
 //Question/answer sources quizlet.com
 
 function handleAnswer(evt) { // handle answer button click
-    const selectedBtn = evt.target; // get the button that was clicked
+    selectedBtn = evt.target; // get the button that was clicked
     selectedIdx = parseInt(selectedBtn.id.replace("btn","")) -1; // get the index of the answer
     questions[questionIdx].chosenAnswer = selectedIdx; // set the choosen answer in the questions array
-    document.querySelectorAll(".btn").forEach(btn => { // remove selected class from all buttons
-        btn.classList.remove("selected"); // remove selected class from all buttons
-    });
+    answersEls.forEach(btn => btn.classList.remove("selected"));// remove selected class from all buttons
     selectedBtn.classList.add("selected"); // add selected class to the clicked button
-    document.getElementById("submit").disabled = false; // enable submit button
+    submitBtn.disabled = false; // enable submit button
 }
 
 function handleSubmit() {
-   const currentQuestion = questions[questionIdx]; // get the current question
+   currentQuestion = questions[questionIdx]; // get the current question
    if(currentQuestion.chosenAnswer === null) { // check if an answer was selected
     return;
    }
@@ -129,14 +130,16 @@ function render() {
     answersEls.forEach((btn, idx) => { // loop through all answer buttons
         btn.textContent = currentQuestion.answers[idx]; // set the button text to the answer
         btn.classList.remove("selected"); // remove selected class from all buttons
+        btn.style.display = 'inline-block'; // show all answer buttons
     });
     scoreEl.textContent = `Score: ${score}`; // set the score text
     submitBtn.disabled = true; // disable submit button
+    submitBtn.style.display = "inline-block"; // show submit button
 }
 
 function renderResults() {
-    questionEl.textContent = "Results"; // set the question text to results
-    document.querySelector('.buttons').innerHTML = ""; // clear the answers
+    questionEl.textContent = "Can I trust you on the Range?"; // set the question text to results
+    answersEls.forEach(btn => btn.style.display = 'none'); // clear the answers
     submitBtn.style.display = "none"; // hide the next button
     scoreEl.textContent = `Final Score: ${score} / ${questions.length}`; // set the final score text
 }
