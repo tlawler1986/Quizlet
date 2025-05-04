@@ -1,6 +1,6 @@
 /*----- constants -----*/
 
-
+// work on sound effects possibly more questions
   
 /*----- state variables -----*/
 let questions; 
