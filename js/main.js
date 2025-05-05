@@ -1,6 +1,6 @@
 /*----- constants -----*/
 
-// work on sound effects possibly more questions
+
   
 /*----- state variables -----*/
 let questions; 
@@ -15,6 +15,8 @@ const answersEls = document.querySelectorAll('.btn');
 const scoreEl = document.querySelector('#score');   
 const submitBtn = document.querySelector('#submit');
 const resetBtn = document.querySelector('#reset');
+
+const sound1 = document.querySelector('#sound1');
 
  
 /*----- event listeners -----*/
@@ -121,6 +123,7 @@ function handleSubmit() {
         renderResults();
     } else {
         render();
+        sound1.play();
     }
 }
 
